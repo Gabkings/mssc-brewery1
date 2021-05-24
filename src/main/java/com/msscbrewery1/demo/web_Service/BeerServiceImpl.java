@@ -15,4 +15,17 @@ public class BeerServiceImpl implements BeerService{
                 .upc(123L)
                 .build();
     }
+
+    @Override
+    public BearDto createNewBeer(BearDto bearDto) {
+        return BearDto
+                .builder()
+                .id(UUID.randomUUID())
+                .build();
+    }
+
+    @Override
+    public BearDto updateBearDetails(UUID beerId, BearDto bearDto) {
+        return BearDto.builder().build();
+    }
 }

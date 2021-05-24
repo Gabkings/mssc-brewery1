@@ -1,5 +1,6 @@
 package com.msscbrewery1.demo.web_Service;
 
+import com.msscbrewery1.demo.web_model.BearDto;
 import com.msscbrewery1.demo.web_model.CustomerDto;
 import org.springframework.stereotype.Service;
 
@@ -12,5 +13,17 @@ public class CustomerServiceImpl implements CustomerService{
                 .id(UUID.randomUUID())
                 .name("Gabriel Gitonga")
                 .build();
+    }
+
+    @Override
+    public CustomerDto createNewCustomer(CustomerDto customerDto) {
+        return CustomerDto.builder()
+                .id(UUID.randomUUID())
+                .build();
+    }
+
+    @Override
+    public CustomerDto updateCustomerDetails(CustomerDto customerDto, CustomerDto customerDto1) {
+        return CustomerDto.builder().build();
     }
 }
