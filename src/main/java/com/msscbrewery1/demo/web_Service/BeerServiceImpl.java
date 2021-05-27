@@ -4,8 +4,9 @@ import com.msscbrewery1.demo.web_model.BearDto;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
+
 @Service
-public class BeerServiceImpl implements BeerService{
+public class BeerServiceImpl implements BeerService {
     @Override
     public BearDto getBeerById(UUID beerId) {
         return BearDto.builder()
@@ -27,5 +28,10 @@ public class BeerServiceImpl implements BeerService{
     @Override
     public BearDto updateBearDetails(UUID beerId, BearDto bearDto) {
         return BearDto.builder().build();
+    }
+
+    @Override
+    public BearDto deleteBeer(UUID beerId) {
+        return null;
     }
 }

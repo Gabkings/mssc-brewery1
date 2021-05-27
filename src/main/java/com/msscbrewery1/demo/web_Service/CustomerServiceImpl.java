@@ -5,8 +5,9 @@ import com.msscbrewery1.demo.web_model.CustomerDto;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
+
 @Service
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDto getCustomerById(UUID customerId) {
         return CustomerDto.builder()
@@ -25,5 +26,9 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public CustomerDto updateCustomerDetails(CustomerDto customerDto, CustomerDto customerDto1) {
         return CustomerDto.builder().build();
+    }
+
+    @Override
+    public void deleteCustomer(UUID customerId) {
     }
 }

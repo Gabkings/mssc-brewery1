@@ -21,29 +21,31 @@ public class CustomerController {
     }
 
     @PostMapping
-    ResponseEntity handlePost( @RequestBody CustomerDto customerDto){
+    ResponseEntity handlePost(@RequestBody CustomerDto customerDto) {
         CustomerDto savedDto = customerService.createNewCustomer(customerDto);
         HttpHeaders headers = new HttpHeaders();
 
-        headers.add("Location", "/api/vi/beer/"+savedDto.getId());
+        headers.add("Location", "/api/vi/beer/" + savedDto.getId());
 
         return new ResponseEntity(headers, HttpStatus.CREATED);
     }
 
     @PutMapping("{customerId}")
-    ResponseEntity handlePut(@PathVariable("customerId")UUID customerId,@RequestBody CustomerDto customerDto){
+    ResponseEntity handlePut(@PathVariable("customerId") UUID customerId, @RequestBody CustomerDto customerDto) {
 
         CustomerDto saveDto = customerService.updateCustomerDetails(customerDto, customerDto);
-
-        HttpHeaders headers = new HttpHeaders();
-
-        headers.add("Location", "/api/vi/beer/"+customerId);
-        return new ResponseEntity(headers, HttpStatus.CREATED);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("{customerId}")
-    ResponseEntity<CustomerDto> getCustomerById(@PathVariable("customerId")UUID customerId){
+    ResponseEntity<CustomerDto> getCustomerById(@PathVariable("customerId") UUID customerId) {
         return new ResponseEntity<>(customerService.getCustomerById(customerId), HttpStatus.OK);
+    }
+
+    @DeleteMapping("{customerId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCustomer(@PathVariable("customerId") UUID customerId){
+        customerService.deleteCustomer(customerId);
     }
 
 
